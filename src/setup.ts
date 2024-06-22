@@ -17,7 +17,6 @@ export async function setup(version: string, nightly: boolean, cacheDependencyPa
   core.addPath(nekoPath);
   core.exportVariable('NEKOPATH', nekoPath);
   core.exportVariable('LD_LIBRARY_PATH', `${nekoPath}:$LD_LIBRARY_PATH`);
-  core.exportVariable('DYLD_LIBRARY_PATH', `${nekoPath}:$DYLD_LIBRARY_PATH`);
 
   const haxe = new HaxeAsset(version, nightly);
   const haxePath = await haxe.setup();
@@ -25,6 +24,8 @@ export async function setup(version: string, nightly: boolean, cacheDependencyPa
   core.exportVariable('HAXE_STD_PATH', path.join(haxePath, 'std'));
 
   if (env.platform === 'osx') {
+    core.exportVariable('DYLD_FALLBACK_LIBRARY_PATH', `${nekoPath}:$DYLD_FALLBACK_LIBRARY_PATH`);
+
     // Ref: https://github.com/asdf-community/asdf-haxe/pull/7
     await exec('ln', [
       '-sfv',
