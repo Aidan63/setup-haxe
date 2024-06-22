@@ -17,6 +17,7 @@ export async function setup(version: string, nightly: boolean, cacheDependencyPa
   core.addPath(nekoPath);
   core.exportVariable('NEKOPATH', nekoPath);
   core.exportVariable('LD_LIBRARY_PATH', `${nekoPath}:$LD_LIBRARY_PATH`);
+  core.exportVariable('DYLD_LIBRARY_PATH', `${nekoPath}:$DYLD_LIBRARY_PATH`);
 
   const haxe = new HaxeAsset(version, nightly);
   const haxePath = await haxe.setup();
