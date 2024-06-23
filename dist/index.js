@@ -249,19 +249,13 @@ class Env {
     }
     get arch() {
         const arch = external_node_os_namespaceObject.arch();
-        switch (arch) {
-            case 'x64': {
-                return '64';
-            }
-            case 'arm64': {
-                if (this.platform === 'osx') {
-                    return 'arm64';
-                }
-            }
-            default: {
-                throw new Error(`${arch} not supported`);
-            }
+        if (arch === 'x64') {
+            return '64';
         }
+        if (arch === 'arm64' && this.platform === 'osx') {
+            return 'arm';
+        }
+        throw new Error(`${arch} not supported`);
     }
 }
 
