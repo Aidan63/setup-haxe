@@ -257,9 +257,6 @@ class Env {
                 if (this.platform === 'osx') {
                     return 'arm64';
                 }
-                else {
-                    throw new Error(`${arch} not supported`);
-                }
             }
             default: {
                 throw new Error(`${arch} not supported`);
