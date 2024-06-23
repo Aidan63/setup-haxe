@@ -236,7 +236,7 @@ export class Env {
 
       case 'arm64': {
         if (this.platform === 'osx') {
-          return 'arm64'
+          return 'arm64';
         } else {
           throw new Error(`${arch} not supported`);
         }
