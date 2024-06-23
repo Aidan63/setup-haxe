@@ -235,7 +235,7 @@ export class Env {
     }
 
     if (arch === 'arm64' && this.platform === 'osx') {
-      return 'arm';
+      return '64';
     }
 
     throw new Error(`${arch} not supported`);
