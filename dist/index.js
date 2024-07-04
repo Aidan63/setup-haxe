@@ -169,6 +169,9 @@ class NekoAsset extends Asset {
         if (this.env.platform === 'win' && this.version.startsWith('2.1')) {
             return this.env.platform;
         }
+        if (this.env.platform === 'osx' && this.version.startsWith('2.4.0-rc.1')) {
+            return 'osx-universal';
+        }
         return `${this.env.platform}${this.env.arch}`;
     }
     get fileNameWithoutExt() {
@@ -253,7 +256,7 @@ class Env {
             return '64';
         }
         if (arch === 'arm64' && this.platform === 'osx') {
-            return '64';
+            return '-universal';
         }
         throw new Error(`${arch} not supported`);
     }
