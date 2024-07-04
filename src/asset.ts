@@ -101,11 +101,11 @@ abstract class Asset {
 }
 
 // * NOTE https://github.com/HaxeFoundation/neko/releases/download/v2-3-0/neko-2.3.0-linux64.tar.gz
-// * NOTE https://github.com/HaxeFoundation/neko/releases/download/v2-3-0/neko-2.3.0-osx64.tar.gz
+// * NOTE https://github.com/HaxeFoundation/neko/releases/download/v2-4-0-rc-1/neko-2.4.0-rc.1-osx-universal.tar.gz
 // * NOTE https://github.com/HaxeFoundation/neko/releases/download/v2-3-0/neko-2.3.0-win64.zip
 export class NekoAsset extends Asset {
   static resolveFromHaxeVersion(version: string) {
-    const nekoVer = version.startsWith('3.') ? '2.1.0' : '2.3.0'; // Haxe 3 only supports neko 2.1
+    const nekoVer = version.startsWith('3.') ? '2.1.0' : '2.4.0-rc.1'; // Haxe 3 only supports neko 2.1
     return new NekoAsset(nekoVer);
   }
 
