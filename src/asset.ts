@@ -126,7 +126,7 @@ export class NekoAsset extends Asset {
       return this.env.platform;
     }
 
-    if (this.env.platform === 'osx' && this.version.startsWith('2.4.0-rc.1')) {
+    if (this.env.platform === 'osx' && this.version.startsWith('2.4')) {
       return 'osx-universal';
     }
 
@@ -239,7 +239,7 @@ export class Env {
     }
 
     if (arch === 'arm64' && this.platform === 'osx') {
-      return '-universal';
+      return '64';
     }
 
     throw new Error(`${arch} not supported`);
